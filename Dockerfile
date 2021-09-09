@@ -1,5 +1,33 @@
 FROM adoptopenjdk:11-jdk-hotspot
 
+RUN set -ex ; \
+    apt-get -y update ; \
+    apt-get -y install libgtk-3-0 \
+              libx11-6 \
+              libx11-xcb1 \
+              libxcb1 \
+              libxcomposite1 \
+              libxcursor1 \
+              libxdamage1 \
+              libxext6 \
+              libxfixes3 \
+              libxi6 \
+              libxrender1 \
+              libdbus-glib-1-2 \
+              libdbus-1-3 \
+              libglib2.0-0 \
+              libpangocairo-1.0-0 \
+              libpango-1.0-0 \
+              libharfbuzz0b \
+              libatk1.0-0 \
+              libcairo-gobject2 \
+              libcairo2 \
+              libgdk-pixbuf2.0-0 \
+              libxcb-shm0 \
+              libpangoft2-1.0-0 \
+              libxt6 ; \
+    apt-get clean
+
 RUN curl -Ls "https://github.com/jbangdev/jbang/releases/download/v0.79.0/jbang-0.79.0.zip" --output jbang.zip \
               && jar xf jbang.zip && rm jbang.zip && mv jbang-* jbang && chmod +x jbang/bin/jbang
 
